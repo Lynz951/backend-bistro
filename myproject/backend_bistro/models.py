@@ -16,3 +16,6 @@ class MenuItems(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     diet = models.ForeignKey(Diet, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title + " " + self.description + "  $" + str(self.price)
+  
