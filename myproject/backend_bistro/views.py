@@ -8,9 +8,9 @@ def get_menu(request):
     menu = list(MenuItems.objects.values())
     return JsonResponse({'data': menu})
 
-def menu_by_category(request, letter):
+# def menu_by_category(request, letter):
 
-    return HttpResponse(f"Category letter is {letter}")
+#     return HttpResponse(f"Category letter is {letter}")
 
 def menu_by_diet(request, dietid):
     menu = list(MenuItems.objects.filter(diet_id=dietid).values())
