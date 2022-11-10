@@ -18,4 +18,17 @@ class MenuItems(models.Model):
 
     def __str__(self):
         return self.title + ": " + self.description + "  $" + str(self.price)
+
+    def json(self):
+        return {
+        'title':self.title,
+        'description': self.description,
+        'price': self.price,
+        'category': {
+            'title': self.category.category
+        },
+        'diet': {
+            'title': self.diet.diet
+        }
+        }
   
