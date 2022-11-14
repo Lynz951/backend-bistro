@@ -1,13 +1,14 @@
+from django.contrib.auth.models import User, Group
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import MenuItems, Category, Diet
 from pprint import pprint
 import json
 import csv
-from rest_framework import viewsets
-from rest_framework import permissions
-from .serializers import MenuItemsSerializer
+from rest_framework import viewsets, permissions
+from .serializers import *
 
+# Create your views here.
 
 class MenuItemsViewSet(viewsets.ModelViewSet):
     """
@@ -16,19 +17,6 @@ class MenuItemsViewSet(viewsets.ModelViewSet):
     queryset = MenuItems.objects.all().order_by('category')
     serializer_class = MenuItemsSerializer
     permission_classes = [permissions.AllowAny]
-
-
-# class GroupViewSet(viewsets.ModelViewSet):
-#     """
-#     API endpoint that allows groups to be viewed or edited.
-#     """
-#     queryset = Group.objects.all()
-#     serializer_class = GroupSerializer
-#     permission_classes = [permissions.IsAuthenticated]
-
-
-# Create your views here.
-
 
 def get_menu(request):
     data = [i.json() for i in MenuItems.objects.all()]

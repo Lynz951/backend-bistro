@@ -14,7 +14,6 @@ class DietSerializer(serializers.ModelSerializer):
 class MenuItemsSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     diet = DietSerializer()
-
     class Meta:
         model = MenuItems
         fields = [
@@ -25,9 +24,3 @@ class MenuItemsSerializer(serializers.ModelSerializer):
         'category',
         'diet',
         ]
-
-
-# class GroupSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = Group
-#         fields = ['url', 'name']
