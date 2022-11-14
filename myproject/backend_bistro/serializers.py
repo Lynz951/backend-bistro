@@ -1,8 +1,20 @@
 from .models import MenuItems, Diet, Category
 from rest_framework import serializers
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'category']
 
-class MenuItemsSerializer(serializers.HyperlinkedModelSerializer):
+class DietSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Diet
+        fields = ['id', 'diet']
+
+class MenuItemsSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+    diet = DietSerializer()
+
     class Meta:
         model = MenuItems
         fields = [
@@ -10,6 +22,8 @@ class MenuItemsSerializer(serializers.HyperlinkedModelSerializer):
         'title', 
         'description', 
         'price',
+        'category',
+        'diet',
         ]
 
 
